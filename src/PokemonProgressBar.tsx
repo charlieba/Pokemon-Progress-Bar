@@ -1,23 +1,39 @@
 import React, { useState, useEffect } from 'react';
-
+import pokemonConfig from  "./pokemonConfig.json";
+const defaultPokemon = "pikachu";
 interface ProgressBarProps {
     percentage: number;
+    pokemonName: string;
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ percentage }) => {
+const ProgressBar: React.FC<ProgressBarProps> = ({ pokemonName, percentage }) => {
+    let pokemon = pokemonConfig[pokemonName];
+    console.log(pokemonConfig);
+    console.log(pokemon);
+    if (!pokemon) {
+        pokemon = pokemonConfig[defaultPokemon];
+    }
+
+    console.log("pokemonName", pokemonName);
     const [color, setColor] = useState('red');
-    const [image, setImage] = useState('https://cdn-icons-png.flaticon.com/512/1828/1828665.png');
+    const [image, setImage] = useState(`/assets/${pokemonName}/1.png`);
+    const pokemonProgress = 100/(pokemon["evolutions"]-1);
 
     useEffect(() => {
-        if (percentage < 50) {
-            setColor('red');
-            setImage('https://cdn-icons-png.flaticon.com/512/1828/1828665.png');
-        } else if (percentage < 80) {
-            setColor('orange');
-            setImage('https://cdn-icons-png.flaticon.com/512/1828/1828662.png');
-        } else {
-            setColor('green');
-            setImage('https://cdn-icons-png.flaticon.com/512/845/845646.png');
+        for (let i = 1; i < pokemon["evolutions"]; i++) {
+            if (percentage < pokemonProgress*i) {
+                if(i===1){
+                    setColor('red');
+                }else if(i===2){
+                    setColor('yellow');
+                }else if(i===3){
+                    setColor('green');
+                }else{
+                    setColor('green');
+                }
+                setImage(`./assets/${pokemon}/${i}.png`);
+                break;
+            }
         }
     }, [percentage]);
 

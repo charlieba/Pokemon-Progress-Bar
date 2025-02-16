@@ -1,0 +1,14 @@
+{
+    "charmander" : { 
+        "evolutions": 3
+     },
+     "pikachu" : { 
+        "evolutions": 2
+     },
+     "bulbasaur" : { 
+        "evolutions": 3
+     },
+     "squirtle" : { 
+        "evolutions": 3
+     }
+}
