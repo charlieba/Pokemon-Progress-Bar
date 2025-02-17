@@ -28,11 +28,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ pokemonName, percentage }) =>
                 }else{
                     setColor('green');
                 }
-                setImage(`https://raw.githubusercontent.com/charlieba/Pokemon-Progress-Bar/refs/heads/main/public/assets/${pokemonName}/${i}.png`);
+                setImage(`https://raw.githubusercontent.com/charlieba/Pokemon-Progress-Bar/refs/heads/main/src/assets/${pokemonName}/${i}.png`);
                 break;
             }else if (percentage >= 100){
                 setColor('green');
-                setImage(`https://raw.githubusercontent.com/charlieba/Pokemon-Progress-Bar/refs/heads/main/public/assets/${pokemonName}/${pokemon["evolutions"]}.png`);
+                setImage(`https://raw.githubusercontent.com/charlieba/Pokemon-Progress-Bar/refs/heads/main/src/assets/${pokemonName}/${pokemon["evolutions"]}.png`);
             }
         }
     }, [percentage, pokemonName]);
