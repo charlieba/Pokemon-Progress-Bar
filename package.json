@@ -5,7 +5,8 @@
   "module": "dist/index.es.js",
   "types": "dist/types/PokemonProgressBar.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src/assets"
   ],
   "scripts": {
     "build": "rollup -c"
